@@ -1,2 +1,2 @@
 # aspects
-Aspect Oriented Programming framework in typescript.
+Aspect Oriented Programming framework in typescript (WIP).
