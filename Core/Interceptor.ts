@@ -1,3 +1,5 @@
+/// <reference path="Aspects\IAspect.ts" />
+
 namespace PRoAspects.Core
 {
     export class Interceptor
@@ -7,7 +9,7 @@ namespace PRoAspects.Core
             
         }
 
-        public ApplyAspect(obj: Object, aspect: any)
+        public ApplyAspect(obj: Object, aspect: IAspect)
         {
             console.log("Hello!");
             console.log("Hello again!");

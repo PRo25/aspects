@@ -1,3 +1,4 @@
+/// <reference path="Aspects\IAspect.ts" />
 var PRoAspects;
 (function (PRoAspects) {
     var Core;
