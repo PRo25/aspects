@@ -9,7 +9,8 @@ namespace PRoAspects.Core
 
         public ApplyAspect(obj: Object, aspect: any)
         {
-            
+            console.log("Hello!");
+            console.log("Hello again!");
         }
     }
 }

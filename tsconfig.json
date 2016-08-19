@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "system",
+        "sourceMap": true,
+        "outFile": "Bin/pro-aspects.js",
+        "declaration": true
+    }
+}
