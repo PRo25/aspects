@@ -14,6 +14,10 @@ var PRoAspects;
         Core.Interceptor = Interceptor;
     })(Core = PRoAspects.Core || (PRoAspects.Core = {}));
 })(PRoAspects || (PRoAspects = {}));
+/// <reference path="IAspect.ts" />
+/// <reference path="IAspect.ts" />
+/// <reference path="IExecuteAfterAspect.ts" />
+/// <reference path="IExecuteBeforeAspect.ts" />
 var PRoAspects;
 (function (PRoAspects) {
     var Core;

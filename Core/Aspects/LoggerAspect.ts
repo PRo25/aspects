@@ -1,6 +1,9 @@
+/// <reference path="IExecuteAfterAspect.ts" />
+/// <reference path="IExecuteBeforeAspect.ts" />
+
 namespace PRoAspects.Core
 {
-    export class LoggerAspect
+    export class LoggerAspect implements PRoAspects.Core.IExecuteBeforeAspect, PRoAspects.Core.IExecuteAfterAspect
     {
         public constructor() 
         {
