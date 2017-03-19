@@ -9,12 +9,15 @@ This library intends to be a starting point to allow you to easily implement new
 - After method execution;
 - On error thrown in method execution;
 
-## TODO
+### TODO
 - On promise resolved;
 - On promise rejected.
 
 # Implemented Join Point Types
 - Method execution;
 
-## TODO
+### TODO
 - Property getter and setter.
+
+# License
+MIT
