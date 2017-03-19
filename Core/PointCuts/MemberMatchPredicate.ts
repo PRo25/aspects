@@ -1,0 +1,1 @@
+export type MemberMatchPredicate = (target: Object, memberName: string) => boolean;

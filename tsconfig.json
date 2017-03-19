@@ -4,6 +4,17 @@
         "module": "system",
         "sourceMap": true,
         "outFile": "Bin/pro-aspects.js",
-        "declaration": true
-    }
+        "declaration": true,
+        "lib": [
+            "es2015",
+            "dom"
+        ],
+        "noImplicitAny": true,
+        "suppressImplicitAnyIndexErrors": true,
+        "inlineSources": true
+    },
+    "exclude": [
+        "Bin",
+        "node_modules"
+    ]
 }
