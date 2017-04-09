@@ -10,17 +10,18 @@ export class OnErrorThrownInMethodExecutionAdvice extends Advice
 
     public CreateAdvisedMember(target: Object, methodName: string): Function
     {
+        let thisAdvice: OnErrorThrownInMethodExecutionAdvice = this;
         let originalMethod: Function = target[methodName];
-        let advisedMethod: Function = (...args: Array<any>) =>
+        let advisedMethod: Function = function(...args: Array<any>)
         {
-            let joinPoint = new MethodExecutionJoinPoint(target, methodName, args);
+            let joinPoint = new MethodExecutionJoinPoint(this, methodName, args);
             try
             {
-                return originalMethod.apply(target, joinPoint.MethodArguments);
+                return originalMethod.apply(this, joinPoint.MethodArguments);
             }
             catch (error)
             {
-                this.Action(error, joinPoint);
+                thisAdvice.Action(error, joinPoint);
             }
         };
         return advisedMethod;

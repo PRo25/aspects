@@ -123,16 +123,16 @@ System.register("Advices/AfterMethodExecutionAdvice", ["Advices/Advice", "JoinPo
                     return _super.call(this, action) || this;
                 }
                 AfterMethodExecutionAdvice.prototype.CreateAdvisedMember = function (target, methodName) {
-                    var _this = this;
+                    var thisAdvice = this;
                     var originalMethod = target[methodName];
                     var advisedMethod = function () {
                         var args = [];
                         for (var _i = 0; _i < arguments.length; _i++) {
                             args[_i] = arguments[_i];
                         }
-                        var joinPoint = new MethodExecutionJoinPoint_1.MethodExecutionJoinPoint(target, methodName, args);
-                        joinPoint.MethodResult = originalMethod.apply(target, joinPoint.MethodArguments);
-                        _this.Action(joinPoint);
+                        var joinPoint = new MethodExecutionJoinPoint_1.MethodExecutionJoinPoint(this, methodName, args);
+                        joinPoint.MethodResult = originalMethod.apply(this, joinPoint.MethodArguments);
+                        thisAdvice.Action(joinPoint);
                         return joinPoint.MethodResult;
                     };
                     return advisedMethod;
@@ -163,16 +163,16 @@ System.register("Advices/BeforeMethodExecutionAdvice", ["Advices/Advice", "JoinP
                     return _super.call(this, action) || this;
                 }
                 BeforeMethodExecutionAdvice.prototype.CreateAdvisedMember = function (target, methodName) {
-                    var _this = this;
+                    var thisAdvice = this;
                     var originalMethod = target[methodName];
                     var advisedMethod = function () {
                         var args = [];
                         for (var _i = 0; _i < arguments.length; _i++) {
                             args[_i] = arguments[_i];
                         }
-                        var joinPoint = new MethodExecutionJoinPoint_2.MethodExecutionJoinPoint(target, methodName, args);
-                        _this.Action(joinPoint);
-                        joinPoint.MethodResult = originalMethod.apply(target, joinPoint.MethodArguments);
+                        var joinPoint = new MethodExecutionJoinPoint_2.MethodExecutionJoinPoint(this, methodName, args);
+                        thisAdvice.Action(joinPoint);
+                        joinPoint.MethodResult = originalMethod.apply(this, joinPoint.MethodArguments);
                         return joinPoint.MethodResult;
                     };
                     return advisedMethod;
@@ -203,19 +203,19 @@ System.register("Advices/OnErrorThrownInMethodExecutionAdvice", ["Advices/Advice
                     return _super.call(this, action) || this;
                 }
                 OnErrorThrownInMethodExecutionAdvice.prototype.CreateAdvisedMember = function (target, methodName) {
-                    var _this = this;
+                    var thisAdvice = this;
                     var originalMethod = target[methodName];
                     var advisedMethod = function () {
                         var args = [];
                         for (var _i = 0; _i < arguments.length; _i++) {
                             args[_i] = arguments[_i];
                         }
-                        var joinPoint = new MethodExecutionJoinPoint_3.MethodExecutionJoinPoint(target, methodName, args);
+                        var joinPoint = new MethodExecutionJoinPoint_3.MethodExecutionJoinPoint(this, methodName, args);
                         try {
-                            return originalMethod.apply(target, joinPoint.MethodArguments);
+                            return originalMethod.apply(this, joinPoint.MethodArguments);
                         }
                         catch (error) {
-                            _this.Action(error, joinPoint);
+                            thisAdvice.Action(error, joinPoint);
                         }
                     };
                     return advisedMethod;

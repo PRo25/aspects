@@ -10,12 +10,13 @@ export class AfterMethodExecutionAdvice extends Advice
 
     public CreateAdvisedMember(target: Object, methodName: string): Function
     {
+        let thisAdvice: AfterMethodExecutionAdvice = this;
         let originalMethod: Function = target[methodName];
-        let advisedMethod: Function = (...args: Array<any>) =>
+        let advisedMethod: Function = function(...args: Array<any>)
         {
-            let joinPoint = new MethodExecutionJoinPoint(target, methodName, args);
-            joinPoint.MethodResult = originalMethod.apply(target, joinPoint.MethodArguments);
-            this.Action(joinPoint);
+            let joinPoint = new MethodExecutionJoinPoint(this, methodName, args);
+            joinPoint.MethodResult = originalMethod.apply(this, joinPoint.MethodArguments);
+            thisAdvice.Action(joinPoint);
             return joinPoint.MethodResult;
         };
         return advisedMethod;
